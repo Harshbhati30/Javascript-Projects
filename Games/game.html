@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+                        
+    <style>
+        .score_board{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 25px;
+            gap: 2rem;
+            
+        }
+
+        #user_score, #comp_score{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 35px;
+            
+        }
+
+        .msg_container{
+            background-color: #081b31;
+            color: white;
+            font-size: 30px;
+            display: inline;
+            border-radius: 1rem;
+        }
+
+        .button_rsp{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+
+        #btn1:hover{
+            background-color: rgb(42, 253, 0);
+            border: red solid 1px;
+
+        }
+
+    </style>
+
+</head>
+<body style="background-image: url(../Games/img/OTP.jpg);">
+    <div class="container">
+        <div class="row">
+            <h1 class="text-center p-3 mb-2 bg-primary text-white fs-1 fw-bold">Welocome to the Game Show</h1>
+        </div>
+        <div class="row text-centre card-group"> 
+
+
+
+            <div class="col-md-4">
+                <div class="card h-100" style="width: 18rem; margin-top: 10px; background-color: rgb(0, 255, 221);">
+                    <img src="../Games/img/dice1.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">Dice</h5>
+                      <p style="color: rgb(3, 0, 168); font-size: 20px; font-weight: 600;" id="hs"></p>
+                      <a href="#" class="btn btn-primary" onclick="dice()">Roll the dice</a>
+                    </div>
+                  </div>
+                </div>
+
+
+
+                <div class="col-md-4">
+                    <div class="card h-100" style="width: 18rem;margin-top: 10px;background-color: rgb(0, 255, 221);">
+                        <img src="../Games/img/Q.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <h5 class="card-title">The Quote of the day is :</h5>
+                          <blockquote style="color: rgb(3, 0, 168); font-size: 20px; font-weight: 600;" id="quote"></blockquote>
+                          <a href="#" class="btn btn-primary"  style="display: flex; align-items: center; justify-content: center; margin: 5px; cursor: pointer; border-radius: 25px;" onclick="newquote(api_url)">New Quote</a>
+                        </div>
+                    </div>
+                </div> 
+
+
+
+
+            <div class="col-md-4">
+                <div class="card h-100" style="width: 18rem;margin-top: 10px; background-color: rgb(0, 255, 221);">
+                    <img src="../Games/img/paperscissor.webp" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">ROCK PAPER SCISSOR</h5>
+                      <p style="color: rgb(3, 0, 168); font-size: 20px; font-weight: 600;" class="card-text " id="p3"></p>
+                      <div class="button_rsp">
+                      <a href="#" id="btn1" class="btn btn-Warning btn-lg" style= "border-radius: 50%; border: 1px solid black;" onclick="play(1)">👊</a>
+                      <a href="#"id="btn1" class="btn btn-Warning btn-lg" style=" border-radius: 50%; border: 1px solid black;" onclick="play(2)">✂️</a>
+                      <a href="#" id="btn1"class="btn btn-Warning btn-lg" style=" border-radius: 50%; border: 1px solid black;" onclick="play(3)">📝</a>
+
+                      </div>
+                      <div class="score_board">
+                        <div class="score">
+                            <p id="user_score">0</p>
+                            <p>You</p>
+                        </div>
+                        <div class="score">
+                            <p id="comp_score">0</p>
+                            <P>Computer</P>
+                        </div>
+                      </div>
+                        <p class="msg_container" style="display: flex;
+                        justify-content: center;
+                        align-items: center;">Play Your Move</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <br>
+
+
+        <div class="row text-centre card-group">
+            <div class="col-md-4">
+                <div class="card h-100" style="width: 18rem;margin-top: 10px;background-color: rgb(0, 255, 221);">
+                    <img src="../Games/img/otp2.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">Your OTP is :</h5>
+                      <p style="color: rgb(3, 0, 168); font-size: 20px;font-weight: 600;" class="card-text " id="otp1"></p>
+                      <a href="#" class="btn btn-primary" onclick="otp()">Generate OTP</a>
+                    </div>
+                </div>
+            </div> 
+
+            
+
+                <div class="col-md-4">
+                    <div class="card h-100" style="width: 18rem;margin-top: 10px;background-color: rgb(0, 255, 221);">
+                        <img src="../Games/img/password.webp" class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <h5 class="card-title">Your 8 digit Password is :</h5>
+                          <p  style="color: rgb(3, 0, 168); font-size: 20px; font-weight: 600;" class="card-text " id="p6"></p>
+                          <a href="#" class="btn btn-primary" onclick="generatePass()">Generate Password</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card h-100" style="width: 18rem;margin-top: 10px;background-color: rgb(0, 255, 221);">
+                        <img src="../Games/img/PIN.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <h5 class="card-title">Your 4 digit PIN is :</h5>
+                          <p  style="color: rgb(3, 0, 168); font-size: 20px; font-weight: 600;" class="card-text " id="p7"></p>
+                          <a href="#" class="btn btn-primary" onclick="generatepin()">Generate PIN</a>
+                        </div>
+                    </div>
+                </div>
+
+
+
+        </div>
+
+             
+</div>
+
+
+
+    <script>
+        let ps=0;
+        let cs=0;
+        function dice(){
+
+            let ans = Math.floor(Math.random()*6)+1;
+            document.getElementById("hs").innerHTML=ans
+
+        }
+
+        function otp(){
+            let otpans = Math.floor(Math.random()*(999999-100000+1))+100000;
+            document.getElementById("otp1").innerHTML=otpans;
+
+        }
+        function play(player){
+            
+            let comp=Math.floor(Math.random()*3)+1;
+            if(player==1 && comp ==1 ){
+                document.getElementById("p3").innerHTML=`Computer Choice : ${comp} <br> Draw`;
+            }
+            else if(player==1){
+                if(comp==2){
+                    document.getElementById("p3").innerHTML=`Computer Choice : ${comp} <br> Player Won`;
+                    ps+=1;
+                    document.getElementById("user_score").innerHTML=ps;
+                }
+                if(comp==3){
+                    document.getElementById("p3").innerHTML=`Computer Choice : ${comp} <br> Computer Won`;
+                    cs+=1;
+                    document.getElementById("comp_score").innerHTML=cs;
+                }
+            }
+            else if(player==2){
+                if(comp==3){
+                    document.getElementById("p3").innerHTML=`Computer Choice : ${comp} <br>Player Won`;
+                    ps+=1;
+                    document.getElementById("user_score").innerHTML=ps;
+                }
+                if(comp==1){
+                    document.getElementById("p3").innerHTML=`Computer Choice : ${comp} <br> Computer Won`;
+                    cs+=1;
+                    document.getElementById("comp_score").innerHTML=cs;
+                }
+            }
+            else if(player==3){
+                if(comp==1){
+                    document.getElementById("p3").innerHTML=`Computer Choice : ${comp} <br>Player Won`;
+                    ps+=1;
+                    document.getElementById("user_score").innerHTML=ps;
+                }
+                if(comp==2){
+                    document.getElementById("p3").innerHTML=`Computer Choice : ${comp} <br> Computer Won`;
+                    cs+=1;
+                    document.getElementById("comp_score").innerHTML=cs;
+                }
+            }
+
+        }
+
+        function generatePass() {
+    let pass = '';
+    let str = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' +
+        'abcdefghijklmnopqrstuvwxyz0123456789@#$\|?><,.~%&^';
+ 
+    for (let i = 1; i <= 8; i++) {
+        let char = Math.floor(Math.random()* str.length + 1);
+ 
+        pass += str.charAt(char)
+        document.getElementById("p6").innerHTML=pass;
+    }
+}
+    function generatepin(){
+            let pin = Math.floor(Math.random()*(9999-1000+1))+1000;
+            document.getElementById("p7").innerHTML=pin;
+
+        }
+
+        const api_url="https://api.quotable.io/random";
+        const quote =document.getElementById("quote");
+        async function newquote(url){
+            const response= await fetch(url);
+            var data= await response.json();
+            quote.innerHTML=data.content;
+
+        }
+        newquote(api_url);
+    </script>
+    
+</body>
+</html>
